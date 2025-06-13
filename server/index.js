@@ -9,12 +9,18 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const allowedOrigins = [
-  'http://localhost:3000',
-  process.env.NEXT_ALLOWED_ORIGINS
+  process.env.NEXT_ALLOWED_ORIGINS,
+  'http://localhost:3000'
 ];
 // Middleware
 app.use(cors({
-  origin: allowedOrigins, 
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true); 
+    if (allowedOrigins.indexOf(origin) === -1) {
+      return callback(new Error('CORS not allowed'), false);
+    }
+    return callback(null, true);
+  },
   credentials: true,              
 }));
 app.use(express.json());
