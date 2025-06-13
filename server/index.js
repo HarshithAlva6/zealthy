@@ -8,10 +8,14 @@ import { initializeDatabase } from './config/database.js';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const allowedOrigins = [
-  process.env.NEXT_ALLOWED_ORIGINS,
-  'http://localhost:3000'
-];
+console.log("WELLL", process.env)
+const allowedOrigins = (process.env.NEXT_ALLOWED_ORIGINS || '')
+  .split(',')
+  .map(o => o.trim())
+  .filter(Boolean);
+if (process.env.NODE_ENV !== 'production') {
+  allowedOrigins.push('http://localhost:3000');
+}
 // Middleware
 app.use(cors({
   origin: allowedOrigins, 

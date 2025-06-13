@@ -40,8 +40,17 @@ export type UserData = {
         if (component === 'about' && !userData.about) {
           errors.about = 'About Me is required';
         }
-        if (component === 'birthdate' && !userData.birthdate) {
-          errors.birthdate = 'Birthdate is required';
+        if (component === 'birthdate'){
+          if (!userData.birthdate) {
+            errors.birthdate = 'Birthdate is required';
+          } else {
+            const birthdate = new Date(userData.birthdate);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); 
+            if (birthdate > today) {
+              errors.birthdate = 'Birthdate cannot be in the future';
+            }
+          }
         }
         if (component === 'address') {
           if (!userData.address?.street) errors['address.street'] = 'Street is required';
