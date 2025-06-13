@@ -1,8 +1,8 @@
-npx create-next-app@latest zealthy --typescript --tailwind --app --src-dir --import-alias "@/*"
-npm i express cors nodemon
-npm i pg
-mkdir src/app/{admin, data}
-mkdir -p server/{routes,config,database}
+-npx create-next-app@latest zealthy --typescript --tailwind --app --src-dir --import-alias "@/*"
+-npm i express cors nodemon
+-npm i pg
+-mkdir src/app/{admin, data}
+-mkdir -p server/{routes,config,database}
 
 npm i lucide-react
 npm install bcrypt bcryptjs
