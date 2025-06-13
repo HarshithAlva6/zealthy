@@ -4,13 +4,17 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 console.log(process.env)
-// Database configuration
+// Database config
 const pool = new Pool({
+  connectionString: process.env.DATABASE_URL || undefined,
   user: process.env.DB_USER || 'harsh',
   host: process.env.DB_HOST || 'localhost',
   database: process.env.DB_NAME || 'zealthy_db',
   password: process.env.DB_PASSWORD || 'alva',
   port: parseInt(process.env.DB_PORT || '5432'),
+  ssl: process.env.DATABASE_URL
+  ? { rejectUnauthorized: false } // required for Render
+  : false, 
 });
 
 export { pool };
