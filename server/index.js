@@ -8,9 +8,13 @@ import { initializeDatabase } from './config/database.js';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  process.env.NEXT_ALLOWED_ORIGINS
+];
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:3000', 
+  origin: allowedOrigins, 
   credentials: true,              
 }));
 app.use(express.json());
