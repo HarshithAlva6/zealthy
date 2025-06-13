@@ -1,11 +1,10 @@
-npx create-next-app@latest zealthy --typescript --tailwind --app --src-dir --import-alias "@/*"
-npm i express cors nodemon
-npm i pg
-mkdir src/app/{admin, data}
-mkdir -p server/{routes,config,database}
-
-npm i lucide-react
-npm install bcrypt bcryptjs
+1. npx create-next-app@latest zealthy --typescript --tailwind --app --src-dir --import-alias "@/*"
+2. npm i express cors nodemon
+3. npm i pg
+4. mkdir src/app/{admin, data}
+5. mkdir -p server/{routes,config,database}
+6. npm i lucide-react
+7. npm install bcrypt bcryptjs
 
 ## Set up PostgreSQL Image in Docker -
 1. Run Docker application on PC/Laptop
